@@ -1,0 +1,15 @@
+<h2>Add item</h2>
+<form name="form" role="form" class="css-form" ng-submit="ctrl.add()">
+    <div class="form-group">
+        <label for="name">Name:</label> <input type="text" class="form-control" id="name" name="name" ng-model="ctrl.item.name" required="true"/><br/>
+    </div>
+    <div class="form-group">
+        <label for="count">Count:</label> <input type="number" class="form-control" id="count" name="count" ng-model="ctrl.item.count" required="true" integer="true" min="0" max="1000"/>
+        <span ng-show="form.size.$error.integer">The value is not a valid integer</span>
+        <span ng-show="form.size.$error.min || form.size.$error.max">The value must be in range 0 to 1000</span>
+    </div>
+    <div class="form-group">
+        <label for="name">Cost:</label> <input type="number" class="form-control" id="price" name="price" ng-model="ctrl.item.price" required="true" step="0.01" min="0" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

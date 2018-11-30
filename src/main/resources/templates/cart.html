@@ -1,0 +1,22 @@
+<h2>Cart</h2>
+<table ng-table="ctrl.tableParams" class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Count</th>
+            <th>Cost</th>
+            <th>Total</th>
+            <th/>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items">
+            <td title="'Name'">{{item.name}}</td>
+            <td title="'Count'">{{item.count}}</td>
+            <td title="'Cost'">{{item.price}}</td>
+            <td title="'Total'">{{item.totalPrice}}</td>
+            <td title="'Delete'"><button type="button" class="btn btn-danger" ng-click="ctrl.deleteItem(item.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+<a href="#!/add" class="btn btn-primary">Add item</a>
