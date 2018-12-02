@@ -196,7 +196,7 @@ function cartService($rootScope, $http, $q) {
     return service;
 
     function add(item) {
-        return $http.post('/api//items/add', item).then(handleSuccess, handleError('Error adding item'));
+        return $http.post('/api/items/add', item).then(handleSuccess, handleError('Error adding item'));
     }
 
     function loadItems() {

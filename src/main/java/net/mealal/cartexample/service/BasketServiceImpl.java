@@ -15,16 +15,16 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public List<Item> listItems() {
-        return basketDAO.listItems();
+        return basketDAO.findAll();
     }
 
     @Override
     public void add(Item item) {
-        basketDAO.addItem(item);
+        basketDAO.insert(item);
     }
 
     @Override
-    public void delete(Long id) {
-        basketDAO.deleteItem(id);
+    public void delete(String id) {
+        basketDAO.deleteById(id);
     }
 }

@@ -1,23 +1,18 @@
 package net.mealal.cartexample.entity;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "basket")
+@Document(collection = "basket")
 public class Item {
 
     @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    private Long id;
+    private String id;
 
-    @Column(name = "ITEM_NAME", nullable = false)
     private String name;
 
-    @Column(name = "ITEM_PRICE", nullable = false)
     private Double price = Double.valueOf(0);
 
-    @Column(name = "ITEMS_COUNT", nullable = false)
     private Integer count = 0;
 
     private double totalPrice;
@@ -34,11 +29,11 @@ public class Item {
         return name;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

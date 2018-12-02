@@ -1,14 +1,8 @@
 package net.mealal.cartexample.dao;
 
 import net.mealal.cartexample.entity.Item;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
+public interface BasketDAO extends MongoRepository<Item, String> {
 
-public interface BasketDAO {
-
-    public void addItem(Item item);
-
-    public void deleteItem(Long id);
-
-    public List<Item> listItems();
 }

@@ -30,19 +30,19 @@ public class ApiController {
 
     @RequestMapping("/items")
     public List<Item> items(Map<String, Object> map) {
-        return /*basket.listItems()*/ new ArrayList<>();
+        return basket.listItems();
     }
 
     @RequestMapping(value = "/items/add", method = RequestMethod.POST)
     public ResponseEntity addItem(@RequestBody Item item) {
         logger.debug("Adding new item: {}", item);
-        //basket.add(item);
+        basket.add(item);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/items/delete/{id}")
-    public ResponseEntity deleteItem(@PathVariable("id") Long id) {
-        //basket.delete(id);
+    public ResponseEntity deleteItem(@PathVariable("id") String id) {
+        basket.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
