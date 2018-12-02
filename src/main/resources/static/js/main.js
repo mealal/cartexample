@@ -34,6 +34,8 @@ function config($routeProvider, $httpProvider) {
         .otherwise({redirectTo : '/'});
 
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+        $httpProvider.interceptors.push('httpResponseInterceptor');
     };
 
 run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
@@ -46,6 +48,16 @@ function run($rootScope, $location, $cookies, $http) {
         });
 };
 
+angular.module('main_app').factory('httpResponseInterceptor', ['$q', '$rootScope', '$location', function($q, $rootScope, $location) {
+    return {
+        responseError: function(rejection) {
+            if (rejection.status === 401) {
+                $location.path('/login');
+            }
+            return $q.reject(rejection);
+        }
+    };
+}]);
 
 angular.module('main_app').controller("LoginController", loginController);
 loginController.$inject = ['$location', 'AuthenticationService', 'MessageService'];
